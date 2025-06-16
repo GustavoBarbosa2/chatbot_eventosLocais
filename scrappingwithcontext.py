@@ -19,17 +19,13 @@ def setup_driver():
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
 
-def aceitar_cookies(driver, timeout=10):
+def aceitar_cookies(driver):
     try:
-        wait = WebDriverWait(driver, timeout)
-        aceitar_btn = wait.until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "button.cookie-consent-accept"))
-        )
+        aceitar_btn = driver.find_element(By.CSS_SELECTOR, "button.cookie-consent-accept")
         aceitar_btn.click()
-        print("Cookies aceites.")
         time.sleep(1)
-    except Exception:
-        print("Botão de cookies não encontrado ou já foi aceite.")
+    except NoSuchElementException:
+        pass
 
 def scroll_to_bottom(driver, pause_time=3, max_scrolls=30):
     scrolls = 0
@@ -40,7 +36,7 @@ def scroll_to_bottom(driver, pause_time=3, max_scrolls=30):
         current_count = len(eventos)
 
         if current_count == last_count:
-            break  # Não carregou mais eventos
+            break  
         last_count = current_count
 
         try:
@@ -113,6 +109,17 @@ def extract_events(driver, base_url):
 
     return eventos
 
+def gerar_contexto(eventos):
+    linhas = []
+    for i, e in enumerate(eventos, 1):
+        data = e.get("data_hora", "N/D")
+        hora = e.get("hora", "N/D")
+        local = e.get("local", "N/D")
+        titulo = e.get("titulo", "Sem título")
+        link = e.get("link", "#")
+        linhas.append(f"{i}. \"{titulo}\" — {data} {hora} — {local} — {link}")
+    return "\n".join(linhas)
+
 def main():
     base_url = "https://www.viralagenda.com"
     url = f"{base_url}/pt/viana-do-castelo"
@@ -127,9 +134,14 @@ def main():
 
     driver.quit()
 
-    # Exibir resultados
+    # Exibir eventos
     for evento in eventos:
         print(evento)
+
+    # Gerar e mostrar o contexto formatado
+    contexto = gerar_contexto(eventos)
+    print("\nContexto para chatbot:\n")
+    print(contexto)
 
 if __name__ == "__main__":
     main()
