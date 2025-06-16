@@ -2,14 +2,14 @@
 
 Este é um chatbot simples que responde a perguntas sobre eventos culturais na região do Alto Minho, com base num conjunto de eventos fornecido manualmente.
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
-- ❓ Faz perguntas sobre datas, locais ou detalhes de eventos
-- 🧠 Usa uma LLM gratuita via API do [Together.ai](https://www.together.ai/)
-- 🗂️ Usa um ficheiro JSON com os eventos como contexto
-- 🌐 Interface web simples feita com [Gradio](https://gradio.app/)
+- Faz perguntas sobre datas, locais ou detalhes de eventos
+- Usa uma LLM gratuita via API do [Together.ai](https://www.together.ai/)
+- Usa um ficheiro JSON com os eventos como contexto
+- Interface web simples feita com [Gradio](https://gradio.app/)
 
-## 🚀 Como usar
+## Como usar
 
 1. **Pré-requisitos:**
    - Python 3.8+
