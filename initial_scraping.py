@@ -13,7 +13,7 @@ def setup_driver():
     chrome_options.add_argument("--disable-notifications")
     chrome_options.add_argument("--disable-popup-blocking")
     chrome_options.add_argument("--disable-infobars")
-    # chrome_options.add_argument("--headless=new")  # Usa isto só depois de confirmar que tudo funciona
+    chrome_options.add_argument("--headless=new") 
 
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
@@ -40,7 +40,7 @@ def scroll_to_bottom(driver, pause_time=3, max_scrolls=30):
         current_count = len(eventos)
 
         if current_count == last_count:
-            break  # Não carregou mais eventos
+            break  
         last_count = current_count
 
         try:

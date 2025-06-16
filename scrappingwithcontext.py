@@ -13,7 +13,7 @@ def setup_driver():
     chrome_options.add_argument("--disable-notifications")
     chrome_options.add_argument("--disable-popup-blocking")
     chrome_options.add_argument("--disable-infobars")
-    # chrome_options.add_argument("--headless=new")  # Usa isto só depois de confirmar que tudo funciona
+    chrome_options.add_argument("--headless=new")  
 
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
@@ -134,11 +134,9 @@ def main():
 
     driver.quit()
 
-    # Exibir eventos
     for evento in eventos:
         print(evento)
 
-    # Gerar e mostrar o contexto formatado
     contexto = gerar_contexto(eventos)
     print("\nContexto para chatbot:\n")
     print(contexto)
