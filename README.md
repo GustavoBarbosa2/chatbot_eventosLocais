@@ -4,7 +4,7 @@ Este é um chatbot simples que responde a perguntas sobre eventos culturais na r
 
 ##  Funcionalidades
 
-- Faz perguntas sobre datas, locais ou detalhes de eventos
+- Faz perguntas sobre datas ou locais de eventos
 - Usa uma LLM gratuita via API do [Together.ai](https://www.together.ai/)
 - Usa um ficheiro JSON com os eventos como contexto
 - Interface web simples feita com [Gradio](https://gradio.app/)
