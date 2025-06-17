@@ -127,7 +127,6 @@ def main():
 
     driver.quit()
 
-    # Exibir resultados
     for evento in eventos:
         print(evento)
 
